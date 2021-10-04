@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { stateComponent } from './state/state.component';
 
+const routes: Routes = [
+  {path : '', component:stateComponent},
+  // {path : 'dialog', component:stateComponent},
 
-const routes: Routes = [];
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

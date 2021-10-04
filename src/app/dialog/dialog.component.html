@@ -1,0 +1,18 @@
+<form [formGroup]='fg' >
+	<h1 mat-dialog-title
+		style="font-family: 'Times New Roman', Times, serif; font-size: 30px;color: rgb(23, 167, 172);margin:30px;">
+		State Master</h1>
+	<div mat-dialog-content>
+
+		<mat-form-field>
+			<input matInput text="State Name" placeholder="State Name:" formControlName="StateName">
+		</mat-form-field><br>
+		<mat-form-field>
+			<input matInput text="State Code" placeholder="State Code:" formControlName="StateCode">
+		</mat-form-field>
+	</div>
+	<div mat-dialog-actions>
+		<button mat-raised-button (click)="onCancel()" style="color: rgb(172, 23, 23);">Cancle</button>
+		<button mat-raised-button (click)=" onDone()" style="color: rgb(23, 172, 28);">Save</button>
+	</div>
+</form>

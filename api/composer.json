@@ -1,0 +1,16 @@
+{
+    "name":"s/name" ,
+    "description": "state",
+    "require": {
+        "php":"7.2.24"
+    },
+    "config": {
+        "classmap-authoritative": false,
+        "optimize-autoloader": true
+    },
+    "autoload": {
+        "psr-4": {
+            "STATENAME\\":"src"
+        }
+    }
+}
