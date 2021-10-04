@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiurl : "http://data.jhansi.in/statenames/api/"
+  apiurl : "http://localhost/PhpstormProjects/state-names/api/"
 };
 
 /*

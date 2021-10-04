@@ -1,6 +1,8 @@
 <?php
   namespace STATENAME\Common;
-  class PostgreDB
+  use Exception;
+
+class PostgreDB
   {
     var $host;
     var $username;
@@ -45,6 +47,9 @@
         $this->error = "cannot connect to database ".$this->dbname;
     }
 
+    /**
+     * @throws \Exception
+     */
     function Query($sql, $params = array())
     {
       // $this->result = pg_query_params($this->dbconnect, $sql, $params);
@@ -55,7 +60,7 @@
         throw new \Exception($this->error);
       }
       return $this->result;
-      
+
       // $this->result = pg_query_params($this->dbconnect, $sql, $params);
       // if ($this->result === false) {
       //   pg_send_query_params($this->dbconnect, $sql, $params);
@@ -80,7 +85,10 @@
       return $this->result;
     }
 
-    function FetchAll($assoc = PGSQL_ASSOC)
+  /**
+   * @throws Exception
+   */
+  function FetchAll($assoc = PGSQL_ASSOC)
     {
       if (!$this->error)
       {
@@ -133,7 +141,7 @@
 
     function Create()
     {
-      $this->oid = pg_lo_create($this->dbconnect); 
+      $this->oid = pg_lo_create($this->dbconnect);
     }
 
     function Open($mode = "rw")
@@ -150,7 +158,7 @@
         $this->error=pg_lo_write ($this->result, $data);
     }
 
-    function Read()
+    function Read($data)
     {
       if (!$this->oid)
         echo "$this->error<br>\n";
@@ -183,7 +191,7 @@
 
     function Options() {
       return pg_options($this->dbconnect);
-    } 
+    }
 
     function Status()
     {
@@ -252,11 +260,11 @@
           return (isset($val) && floatval($val) > 0)?floatval($val):$defaultVal;
       }
     }
-    
+
     // Returns string (formatted)
     public function checkDBDate($val, $defaultVal = null, $retFormat = 'Y-m-d', $from_time_zone = 'UTC', $to_time_zone = 'Asia/Kolkata')
     {
-      if ($val == "" or $val == null) 
+      if ($val == "" or $val == null)
         return $defaultVal;
 
       $dt = \DateTime::createFromFormat('d/m/Y', $val, new \DateTimeZone($from_time_zone));

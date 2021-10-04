@@ -2,7 +2,7 @@
     "name":"s/name" ,
     "description": "state",
     "require": {
-        "php":"7.2.24"
+        "php":"8.0.11"
     },
     "config": {
         "classmap-authoritative": false,

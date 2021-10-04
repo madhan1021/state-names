@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogComponent } from '../state-name/dialog.component';
+import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ServerService } from '../server.service';
@@ -52,7 +52,7 @@ export class stateComponent implements OnInit {
     let dialog = this.dialog.open(DialogComponent, dialogRef);
     dialog.afterClosed().subscribe(res => {
       this.result = res;
-      // console.log(this.result);      
+      // console.log(this.result);
       if (this.result == "sucessfully Done") {
         this.table();
       }
@@ -65,17 +65,17 @@ export class stateComponent implements OnInit {
     dialogRef.data = {
       data : d,
       action: 'edit'
-      
+
     }
     let dialog = this.dialog.open(DialogComponent, dialogRef);
     dialog.afterClosed().subscribe(res => {
       this.result = res;
-      // console.log(this.result);      
+      // console.log(this.result);
       if (this.result == "sucessfully Done") {
         this.table();
       }
     })
-    
+
   }
 
   table() {

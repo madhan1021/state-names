@@ -21,11 +21,11 @@
     // const pgPersistent = true;
 
     // // Suresh
-    const pgHost = '127.0.0.1';
+    const pgHost = 'localhost';
     const pgPort = 5432;
-    const pgDbName = 'apphero';
+    const pgDbName = 'training';
     const pgUser = 'postgres';
-    const pgPassword = 'bcs';
+    const pgPassword = 'newpost12345';
     const pgPersistent = true;
 
     // Development (Thiru)

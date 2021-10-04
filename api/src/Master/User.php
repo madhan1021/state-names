@@ -7,9 +7,9 @@
            $retobj = [];
       // var_dump($data);
       // die();
-         $statename = isset($data->StateName) ? $data->StateName : null; 
-         $statecode = isset($data->StateCode) ? $data->StateCode : null;   
-         $sql ='INSERT INTO statename(statename,statecode) VALUES($1,$2)';
+         $statename = isset($data->StateName) ? $data->StateName : null;
+         $statecode = isset($data->StateCode) ? $data->StateCode : null;
+         $sql ='INSERT INTO cms.statename(statename,statecode) VALUES($1,$2)';
 
          $db = new \STATENAME\Common\PostgreDB();
 
@@ -25,13 +25,13 @@
 
            return $retobj;
        }
-       
+
        function TABLE ($data){
         $retobj = [];
    // var_dump($data);
    // die();
-       
-      $sql ='SELECT *from statename ORDER by id ';
+
+      $sql ='SELECT * from cms.statename ORDER by id ';
 
       $db = new \STATENAME\Common\PostgreDB();
 
@@ -52,9 +52,9 @@
       $retobj = [];
  // var_dump($data);
  // die();
-    $statename = isset($data->StateName) ? $data->StateName : null; 
-    $statecode = isset($data->StateCode) ? $data->StateCode : null;   
-    $sql ='INSERT INTO statename(statename,statecode) VALUES($1,$2)';
+    $statename = isset($data->StateName) ? $data->StateName : null;
+    $statecode = isset($data->StateCode) ? $data->StateCode : null;
+    $sql ='INSERT INTO cms.statename(statename,statecode) VALUES($1,$2)';
 
     $db = new \STATENAME\Common\PostgreDB();
 
@@ -76,12 +76,12 @@
       // var_dump($data);
       // die();
 
-      $id = isset($data->id) ? $data->id : null; 
-      $sql ='DELETE FROM statename where id=$1';
+      $id = isset($data->id) ? $data->id : null;
+      $sql ='DELETE FROM cms.statename where id=$1';
 
       $db = new \STATENAME\Common\PostgreDB();
 
-      
+
       if ($db->Query($sql,[$id])) {
 
          $retobj=["message" => "sucessfully Done"];
@@ -91,9 +91,9 @@
       $db->DBClose();
 
       // var_dump($rows);
-       
+
       return $retobj;
-   }    
+   }
 
 
    }
