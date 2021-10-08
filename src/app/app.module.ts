@@ -8,11 +8,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { stateComponent } from './state/state.component';
 import { DialogComponent } from './dialog/dialog.component';
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -20,22 +22,24 @@ import { DialogComponent } from './dialog/dialog.component';
     AppComponent,
     DialogComponent,
     stateComponent,
-    
-    
+
+
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatInputModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatInputModule,
+        MatTableModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDialogModule,
+        MatCardModule,
+        // FlexLayoutModule,
+
+    ],
   entryComponents: [
     DialogComponent
   ],

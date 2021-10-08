@@ -1,35 +1,36 @@
-<button mat-raised-button (click)="openDialog()" style="color: rgb(43, 43, 184); font-size: 140%;">click</button>
+<h1 style="text-align: center;text-decoration: underline;color: darkslategrey;font-variant: small-caps">Thaluk Data Entry</h1>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin: 60px; ">
+    <button mat-raised-button (click)="openDialog()" style="color: white; font-size: 1.5rem;position: relative;left: 82%;top: 10%;background-color: midnightblue;text-transform: uppercase;padding: 10px;">Add Thaluk</button>
 
-    <!-- Position Column -->
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin: 60px;margin-top: 7%;margin-left: 7%;">
+
     <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef style="background: rgb(78, 111, 211); font-size: 135%;"> id </th>
+        <th mat-header-cell *matHeaderCellDef style="background: rgb(78,211,191); font-size: 135%;"> Id </th>
         <td mat-cell *matCellDef="let data;let idx = index" style="column-gap: 550%;"> {{idx+1}}</td>
     </ng-container>
 
-    <!-- Name Column -->
+
     <ng-container matColumnDef="statename">
-        <th mat-header-cell *matHeaderCellDef style="background: rgb(78, 111, 211);font-size: 135%;">statename </th>
+        <th mat-header-cell *matHeaderCellDef style="background: rgb(78,211,191);font-size: 135%;">ThalukName </th>
         <td mat-cell *matCellDef="let data"> {{data.statename}}</td>
     </ng-container>
 
-    <!-- Weight Column -->
+
     <ng-container matColumnDef="statecode">
-        <th mat-header-cell *matHeaderCellDef style="background: rgb(78, 111, 211);font-size: 135%;" > statecode </th>
+        <th mat-header-cell *matHeaderCellDef style="background: rgb(78,211,191);font-size: 135%;" > ThalukCode </th>
         <td mat-cell *matCellDef="let data">{{data.statecode }} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+
     <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef style="background: rgb(78, 111, 211);font-size: 135%;"> action </th>
-        <td mat-cell *matCellDef="let data"> 
-            <button mat-raised-button type="button" (click)="editdialog(data)" style="color: rgb(43, 184, 48)"><mat-icon>mode_edit</mat-icon></button> 
-        <button mat-raised-button type="button" (click)="onRemove(data)" style="color: rgb(209, 21, 21)" ><mat-icon>highlight_off</mat-icon></button>    
+        <th mat-header-cell *matHeaderCellDef style="background: rgb(78,211,191 );font-size: 135%;"> Actions </th>
+        <td mat-cell *matCellDef="let data2">
+          <button mat-raised-button type="button" (click)="editdialog(data2)" style="padding: 5px;font-weight: bold;text-transform: uppercase;font-size: 15px;background-color: forestgreen;color: white">Update</button>
+        <button mat-raised-button type="button" (click)="onRemove(data2)" style="padding: 5px;font-weight: bold;text-transform: uppercase;font-size: 15px;background-color: darkred;color:white" >Delete</button>
         </td>
     </ng-container>
 
-    
+
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

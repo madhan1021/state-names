@@ -15,14 +15,14 @@ export class ServerService {
         {headers: this.http , params : new HttpParams().set("stname","true") }
       )
     }
-   table(data:any){
+   table_data(data:any){
     return this.Http.post(
       environment.apiurl +"data-server.php",
       data,
       {headers: this.http , params : new HttpParams().set("table","true") }
     )
    }
-   
+
    edit(data:any){
     return this.Http.post(
       environment.apiurl +"data-server.php",
@@ -32,7 +32,7 @@ export class ServerService {
    }
    onRemove(data:any){
     //  console.log(data);
-     
+
     return this.Http.post(
       environment.apiurl +"data-server.php",
       data,

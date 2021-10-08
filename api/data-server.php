@@ -1,11 +1,14 @@
 <?php
 
+use STATENAME\Common\GeneralFunctions;
+use STATENAME\Master\User;
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once __DIR__.'/vendor/autoload.php';
 
-$generalFunction = new \STATENAME\Common\GeneralFunctions;
+$generalFunction = new GeneralFunctions;
 if ($generalFunction->addCORHeaders()) {
   exit();
 }
@@ -16,7 +19,7 @@ switch (true){
       $data = file_get_contents('php://input');
       $postdata = json_decode($data);
       // var_dump($postdata);
-      $stn= new \STATENAME\Master\User();
+      $stn= new User();
       echo  json_encode($stn->STN ($postdata));
       break;
 
@@ -26,7 +29,7 @@ switch (true){
     $data = file_get_contents('php://input');
     $postdata = json_decode($data);
     // var_dump($postdata);
-    $tab= new \STATENAME\Master\User();
+    $tab= new User();
     echo  json_encode($tab->TABLE($postdata));
         break;
 
@@ -34,15 +37,15 @@ switch (true){
     $data = file_get_contents('php://input');
     $postdata = json_decode($data);
     // var_dump($postdata);
-    $edit= new \STATENAME\Master\User();
+    $edit= new User();
     echo  json_encode($edit->EDIT($postdata));
     break;
-      
+
   case (isset($_GET['remove']) && $_GET['remove']);
     $data = file_get_contents('php://input');
-    $postdata = json_decode($data); 
-    
-    $remove= new \STATENAME\Master\User();
+    $postdata = json_decode($data);
+
+    $remove= new User();
     echo  json_encode($remove->REMOVE($postdata));
     break;
 

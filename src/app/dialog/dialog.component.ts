@@ -1,5 +1,5 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup,Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ServerService } from '../server.service';
@@ -17,7 +17,7 @@ export class DialogComponent implements OnInit {
   constructor(
     private dialog: MatDialogRef<DialogComponent>,
     private dataservice: ServerService,
-    private fb: FormBuilder,
+    public fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
@@ -35,8 +35,8 @@ export class DialogComponent implements OnInit {
 
   forminitial() {
     this.fg = this.fb.group({
-      StateName: new FormControl('',),
-      StateCode: new FormControl('',)
+      StateName: new FormControl('',Validators.required),
+      StateCode: new FormControl('',Validators.required)
     })
   }
 
@@ -53,15 +53,9 @@ export class DialogComponent implements OnInit {
   onDone() {
     this.dataservice.stname(this.fg.value).subscribe(r => {
       this.result = r;
-      if (this.result.message == "sucessfully Done") {
+      if (this.result.message == "successfully Done") {
         this.dialog.close(this.result.message);
       }
     });
-
-
-
-
-    // console.log(this.fg.value);
-
   }
 }

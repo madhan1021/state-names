@@ -60,26 +60,10 @@ class PostgreDB
         throw new \Exception($this->error);
       }
       return $this->result;
-
-      // $this->result = pg_query_params($this->dbconnect, $sql, $params);
-      // if ($this->result === false) {
-      //   pg_send_query_params($this->dbconnect, $sql, $params);
-      //   $res1 = pg_get_result($this->dbconnect);
-      //   $this->error = pg_result_error($res1);
-      //   echo $this->error;
-      //   if (isset($this->error)) {
-      //     throw new \Exception($this->error);
-      //   }
-      // }
-      // return $this->result;
     }
 
     function ExecQuery($sql)
     {
-      // $this->query = new Query ($sql, $this->dbconnect);
-      // $this->result = $this->query->Execute();
-      // $this->error = $this->query->Error();
-      // $this->query->Free();
       $this->result = pg_query($this->dbconnect, $sql);
       $this->error = pg_result_error($this->result);
       return $this->result;
@@ -98,25 +82,8 @@ class PostgreDB
       else
       {
         throw new \Exception($this->error);
-        // echo "An error occured, $this->error";
-        // return null;
       }
     }
-
-    // function FetchResult(&$row, $assoc = PGSQL_ASSOC) // PGSQL_BOTH
-    // {
-    //   if (!$this->error)
-    //   {
-    //     @$arr = pg_fetch_array($this->result, $row, $assoc);
-    //     return $arr;
-    //   }
-    //   else
-    //   {
-    //     echo "An error occured, $this->error";
-    //     return null;
-    //   }
-    // }
-
     function NumRows()
     {
       if ($this->result && !$this->error)
@@ -203,11 +170,6 @@ class PostgreDB
       pg_query($this->dbconnect, 'START TRANSACTION ISOLATION LEVEL REPEATABLE READ;');
     }
 
-    // function Savepoint($a = 'a')
-    // {
-    //   pg_query($this->dbconnect, "SAVEPOINT ".$a);
-    // }
-
     function RollBack()
     {
       if (!$this->oid)
@@ -232,7 +194,6 @@ class PostgreDB
       pg_close($this->dbconnect);
     }
 
-    // General functions
     function checkString($val, $defaultVal = null)
     {
       return (isset($val) && strlen($val) > 0)?$val:$defaultVal;
@@ -261,7 +222,7 @@ class PostgreDB
       }
     }
 
-    // Returns string (formatted)
+
     public function checkDBDate($val, $defaultVal = null, $retFormat = 'Y-m-d', $from_time_zone = 'UTC', $to_time_zone = 'Asia/Kolkata')
     {
       if ($val == "" or $val == null)
